@@ -4,8 +4,13 @@ const tf = require("@tensorflow/tfjs-node");
 
 const init = async () => {
   const server = Hapi.server({
-    port: 3000,
     host: '0.0.0.0',
+        port: process.env.PORT,
+        routes: {
+            cors: {
+                origin: ["*"],
+            },
+        },
   });
  
   server.route(routes);
